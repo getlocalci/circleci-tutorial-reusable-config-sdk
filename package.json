@@ -1,20 +1,20 @@
 {
-  "name": "circleci-tutorial-for-beginners",
+  "name": "circleci-tutorial-config-sdk",
   "version": "0.1.0",
-  "description": "Tutorial for CircleCI®",
+  "description": "Tutorial for the CircleCI® TypeScript Config SDK",
   "author": "Ryan Kienstra",
   "license": "GPL-2.0-or-later",
   "keywords": [
-    "javascript",
+    "typescript",
     "CI/CD"
   ],
-  "homepage": "https://github.com/getlocalci/circleci-tutorial-for-beginners#readme",
+  "homepage": "https://github.com/getlocalci/circleci-tutorial-config-sdk#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/getlocalci/circleci-tutorial-for-beginners.git"
+    "url": "git+https://github.com/getlocalci/circleci-tutorial-config-sdk.git"
   },
   "bugs": {
-    "url": "https://github.com/getlocalci/circleci-tutorial-for-beginners/issues"
+    "url": "https://github.com/getlocalci/circleci-tutorial-config-sdk/issues"
   },
   "engines": {
     "node": "14"
