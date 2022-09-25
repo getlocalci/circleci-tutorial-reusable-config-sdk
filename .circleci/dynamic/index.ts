@@ -31,8 +31,7 @@ const phpOrb = new CircleCI.orb.OrbImport(
   orbManifest
 );
 
-config.importOrb(nodeOrb);
-config.importOrb(phpOrb);
+config.importOrb(nodeOrb).importOrb(phpOrb);
 
 [
   new CircleCI.Job(
@@ -71,7 +70,10 @@ config.importOrb(phpOrb);
       ])
     ).executor
   )
-    .defineParameter(phpVersionParameterName, CircleCI.mapping.ParameterSubtype.STRING)
+    .defineParameter(
+      phpVersionParameterName,
+      CircleCI.mapping.ParameterSubtype.STRING
+    )
     .addStep(new CircleCI.commands.Checkout())
     .addStep(
       new CircleCI.reusable.ReusedCommand(phpOrb.commands["install-packages"])
