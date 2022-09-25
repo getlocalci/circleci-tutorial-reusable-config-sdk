@@ -5,7 +5,6 @@ const config = new CircleCI.Config();
 const workflow = new CircleCI.Workflow("test-lint");
 config.addWorkflow(workflow);
 
-const phpVersionParameterName = "php-version-number";
 const orbManifest: CircleCI.types.orb.OrbImportManifest = {
   jobs: {},
   commands: {
@@ -33,6 +32,7 @@ const phpOrb = new CircleCI.orb.OrbImport(
 
 config.importOrb(nodeOrb).importOrb(phpOrb);
 
+const phpVersionParameterName = "php-version-number";
 [
   new CircleCI.Job(
     "js-build",
