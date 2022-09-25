@@ -97,9 +97,12 @@ config.importOrb(nodeOrb).importOrb(phpOrb);
   workflow.addJob(
     job,
     job.name === "php-test"
-      ? { matrix: { [phpVersionParameterName]: ["7.3", "7.4", "8.0", "8.1"] } }
+      ? {
+        matrix: { [phpVersionParameterName]: ["7.3", "7.4", "8.0", "8.1"] },
+        requires: ["php-lint"],
+      }
       : undefined
-  );
+  )
 });
 
 fs.writeFile("./dynamicConfig.yml", config.stringify(), () => {});
