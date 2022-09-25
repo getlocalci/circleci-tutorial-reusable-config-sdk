@@ -1,7 +1,7 @@
 {
-  "name": "circleci-tutorial-for-beginners-dynamic-config",
+  "name": "circleci-tutorial-config-sdk-dynamic-config",
   "version": "0.1.0",
-  "description": "Dynamic CircleCI® config",
+  "description": "Config SDK example",
   "author": "Ryan Kienstra",
   "main": "index.ts",
   "type": "module",
