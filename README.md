@@ -8,4 +8,4 @@ Please see the [full tutorial](https://getlocalci.com/circleci-config-sdk-tutori
 
 Here are the resulting jobs:
 
-![circleci-config-sdk-command-type-hinting](https://user-images.githubusercontent.com/4063887/192191169-6301cc08-cbc7-4f27-bcd9-ffc9a6eea8c3.gif)
+![circleci-pipeline](https://user-images.githubusercontent.com/4063887/192191323-923ceb74-9222-4fdc-9592-43e76b05a473.jpg)
