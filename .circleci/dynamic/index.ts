@@ -8,7 +8,7 @@ config.addWorkflow(workflow);
 function createPhpTestJobs(...phpVersions: string[]) {
   return phpVersions.map((phpVersion) => {
     return new CircleCI.Job(
-      `php-test-${phpVersion.replace('.', '-')}`,
+      `php-test-${phpVersion.replace(".", "-")}`,
       new CircleCI.executors.DockerExecutor(`cimg/php:${phpVersion}`),
       [
         new CircleCI.commands.Checkout(),
@@ -24,7 +24,7 @@ function createPhpTestJobs(...phpVersions: string[]) {
     new CircleCI.executors.DockerExecutor("cimg/php:8.1"),
     [
       new CircleCI.commands.Checkout(),
-      new CircleCI.commands.Run({ command: 'composer i'}),
+      new CircleCI.commands.Run({ command: "composer i" }),
       new CircleCI.commands.Run({ command: "composer lint" }),
     ]
   ),
@@ -34,7 +34,7 @@ function createPhpTestJobs(...phpVersions: string[]) {
     new CircleCI.executors.DockerExecutor("cimg/node:14.18"),
     [
       new CircleCI.commands.Checkout(),
-      new CircleCI.commands.Run({ command: 'npm ci'}),
+      new CircleCI.commands.Run({ command: "npm ci" }),
       new CircleCI.commands.Run({
         name: "Running JS linting and unit test",
         command: `npm run lint:js \n npm run test:js`,
@@ -46,7 +46,7 @@ function createPhpTestJobs(...phpVersions: string[]) {
     new CircleCI.executors.MachineExecutor("large", "ubuntu-2004:202111-02"),
     [
       new CircleCI.commands.Checkout(),
-      new CircleCI.commands.Run({ command: 'npm ci' }),
+      new CircleCI.commands.Run({ command: "npm ci" }),
       new CircleCI.commands.Run({
         name: "Running e2e tests",
         command: "npm run wp-env start && npm run test:e2e",
