@@ -19,6 +19,7 @@ function createPhpTestJobs(...phpVersions: string[]) {
 }
 
 [
+  ...createPhpTestJobs("7.3", "7.4", "8.0", "8.1"),
   new CircleCI.Job(
     "php-lint",
     new CircleCI.executors.DockerExecutor("cimg/php:8.1"),
@@ -28,7 +29,6 @@ function createPhpTestJobs(...phpVersions: string[]) {
       new CircleCI.commands.Run({ command: "composer lint" }),
     ]
   ),
-  ...createPhpTestJobs("7.3", "7.4", "8.0", "8.1"),
   new CircleCI.Job(
     "js-build",
     new CircleCI.executors.DockerExecutor("cimg/node:14.18"),
