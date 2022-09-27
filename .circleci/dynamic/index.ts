@@ -36,7 +36,7 @@ function createPhpTestJobs(...phpVersions: string[]) {
       new CircleCI.commands.Run({ command: "npm ci" }),
       new CircleCI.commands.Run({
         name: "Running JS linting and unit test",
-        command: `npm run lint:js \n npm run test:js`,
+        command: 'npm run lint:js && npm run test:js',
       }),
     ]
   ),
