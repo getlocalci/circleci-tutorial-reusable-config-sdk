@@ -20,6 +20,16 @@ function createPhpTestJobs(...phpVersions: string[]) {
 
 [
   new CircleCI.Job(
+    "php-lint",
+    new CircleCI.executors.DockerExecutor("cimg/php:8.1"),
+    [
+      new CircleCI.commands.Checkout(),
+      new CircleCI.commands.Run({ command: 'composer i'}),
+      new CircleCI.commands.Run({ command: "composer lint" }),
+    ]
+  ),
+  ...createPhpTestJobs("7.3", "7.4", "8.0", "8.1"),
+  new CircleCI.Job(
     "js-build",
     new CircleCI.executors.DockerExecutor("cimg/node:14.18"),
     [
@@ -31,16 +41,6 @@ function createPhpTestJobs(...phpVersions: string[]) {
       }),
     ]
   ),
-  new CircleCI.Job(
-    "php-lint",
-    new CircleCI.executors.DockerExecutor("cimg/php:8.1"),
-    [
-      new CircleCI.commands.Checkout(),
-      new CircleCI.commands.Run({ command: 'composer i'}),
-      new CircleCI.commands.Run({ command: "composer lint" }),
-    ]
-  ),
-  ...createPhpTestJobs("7.3", "7.4", "8.0", "8.1"),
   new CircleCI.Job(
     "e2e-test",
     new CircleCI.executors.MachineExecutor("large", "ubuntu-2004:202111-02"),
