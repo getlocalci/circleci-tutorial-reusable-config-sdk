@@ -25,8 +25,7 @@ function createPhpTestJobs(...phpVersions: string[]) {
     new CircleCI.executors.DockerExecutor("cimg/php:8.1"),
     [
       new CircleCI.commands.Checkout(),
-      new CircleCI.commands.Run({ command: "composer i" }),
-      new CircleCI.commands.Run({ command: "composer lint" }),
+      new CircleCI.commands.Run({ command: "composer i && composer lint" }),
     ]
   ),
   new CircleCI.Job(
