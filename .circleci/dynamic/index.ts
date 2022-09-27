@@ -32,6 +32,19 @@ const phpOrb = new CircleCI.orb.OrbImport(
 
 config.importOrb(nodeOrb).importOrb(phpOrb);
 
+function createPhpTestJobs(...phpVersions: string[]) {
+  return phpVersions.map((phpVersion) => {
+    return new CircleCI.Job(
+      "php-test",
+      new CircleCI.executors.DockerExecutor(`cimg/php:${phpVersion}`),
+      [
+        new CircleCI.commands.Checkout(),
+        new CircleCI.commands.Run({ command: "composer i && composer test" }),
+      ]
+    );
+  });
+}
+
 const phpVersionParameterName = "php-version-number";
 [
   new CircleCI.Job(
@@ -55,30 +68,7 @@ const phpVersionParameterName = "php-version-number";
       new CircleCI.commands.Run({ command: "composer lint" }),
     ]
   ),
-  new CircleCI.reusable.ParameterizedJob(
-    "php-test",
-    new CircleCI.reusable.ReusableExecutor(
-      "php",
-      new CircleCI.executors.DockerExecutor(
-        "cimg/php:<< parameters.php-version-number >>"
-      ),
-      new CircleCI.parameters.CustomParametersList([
-        new CircleCI.parameters.CustomParameter(
-          phpVersionParameterName,
-          CircleCI.mapping.ParameterSubtype.STRING
-        ),
-      ])
-    ).executor
-  )
-    .defineParameter(
-      phpVersionParameterName,
-      CircleCI.mapping.ParameterSubtype.STRING
-    )
-    .addStep(new CircleCI.commands.Checkout())
-    .addStep(
-      new CircleCI.reusable.ReusedCommand(phpOrb.commands["install-packages"])
-    )
-    .addStep(new CircleCI.commands.Run({ command: "composer test" })),
+  ...createPhpTestJobs("7.3", "7.4", "8.0", "8.1"),
   new CircleCI.Job(
     "e2e-test",
     new CircleCI.executors.MachineExecutor("large", "ubuntu-2004:202111-02"),
@@ -94,15 +84,7 @@ const phpVersionParameterName = "php-version-number";
   ),
 ].forEach((job) => {
   config.addJob(job);
-  workflow.addJob(
-    job,
-    job.name === "php-test"
-      ? {
-          matrix: { [phpVersionParameterName]: ["7.3", "7.4", "8.0", "8.1"] },
-          requires: ["php-lint"],
-        }
-      : undefined
-  );
+  workflow.addJob(job);
 });
 
 fs.writeFile("./dynamicConfig.yml", config.stringify(), () => {});
