@@ -8,7 +8,7 @@ config.addWorkflow(workflow);
 function createPhpTestJobs(...phpVersions: string[]) {
   return phpVersions.map((phpVersion) => {
     return new CircleCI.Job(
-      `php-test-${phpVersion}`,
+      `php-test-${phpVersion.replace('.', '-')}`,
       new CircleCI.executors.DockerExecutor(`cimg/php:${phpVersion}`),
       [
         new CircleCI.commands.Checkout(),
