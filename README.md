@@ -1,4 +1,4 @@
-# CircleCI® Tutorial For The Config SDK
+# CircleCI® Tutorial For The Reusable Config SDK
 
 An example [config setup](.circleci/), using CircleCI's TypeScript [Config SDK](https://circleci.com/docs/circleci-config-sdk).
 
@@ -8,4 +8,4 @@ Please see the [full tutorial](https://getlocalci.com/circleci-config-sdk-tutori
 
 Here are the resulting jobs:
 
-![circleci-pipeline](https://user-images.githubusercontent.com/4063887/192191323-923ceb74-9222-4fdc-9592-43e76b05a473.jpg)
+![circleci-pipeline](https://user-images.githubusercontent.com/4063887/194399168-de6cd8cf-d8ab-4b0b-8b71-60a0bd70b628.jpeg)
