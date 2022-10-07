@@ -1,20 +1,20 @@
 {
-  "name": "circleci-tutorial-config-sdk",
+  "name": "circleci-tutorial-reusable-config-sdk",
   "version": "0.1.0",
-  "description": "Tutorial for the CircleCI® TypeScript Config SDK",
+  "description": "Tutorial for the reusable CircleCI® TypeScript Config SDK",
   "author": "Ryan Kienstra",
   "license": "GPL-2.0-or-later",
   "keywords": [
     "typescript",
     "CI/CD"
   ],
-  "homepage": "https://github.com/getlocalci/circleci-tutorial-config-sdk#readme",
+  "homepage": "https://github.com/getlocalci/circleci-tutorial-reusable-config-sdk#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/getlocalci/circleci-tutorial-config-sdk.git"
+    "url": "git+https://github.com/getlocalci/circleci-tutorial-reusable-config-sdk.git"
   },
   "bugs": {
-    "url": "https://github.com/getlocalci/circleci-tutorial-config-sdk/issues"
+    "url": "https://github.com/getlocalci/circleci-tutorial-reusable-config-sdk/issues"
   },
   "engines": {
     "node": "14"
